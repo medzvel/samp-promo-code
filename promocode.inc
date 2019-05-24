@@ -7,7 +7,7 @@
 	#define MAX_PROMO_CODE (15)
 #endif
 
-new 
+static 
 	PROMO_CODE[MAX_PROMO_CODE][MAX_PROMO_CODE_LEN],
 	PROMO_CODE_CREATED = 0
 ;
@@ -15,13 +15,13 @@ new
 
 forward OnPlayerUsePromoCode(playerid, const promo_name[]);
 
-stock AddPromoCode(promo_name[])
+stock AddPromoCode(const promo_name[])
 {
 	strcat(PROMO_CODE[PROMO_CODE_CREATED], promo_name);
 	return PROMO_CODE_CREATED++;
 }
 
-stock UsePromoCode(playerid, promo_name[])
+stock UsePromoCode(playerid, const promo_name[])
 {
 	for(new i; i<PROMO_CODE_CREATED;i++)
 	{
@@ -34,7 +34,7 @@ stock UsePromoCode(playerid, promo_name[])
 	return 0;
 }
 
-stock bool:PromoCodeExists(promo_name[])
+stock bool:PromoCodeExists(const promo_name[])
 {
 	for(new i; i<PROMO_CODE_CREATED;i++)
 	{
